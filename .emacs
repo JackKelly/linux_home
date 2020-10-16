@@ -1,9 +1,8 @@
 (require 'package)
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.org/packages/") t)
-(add-to-list 'package-archives
-             '("marmalade" . "https://marmalade-repo.org/packages/") t)
 (package-initialize)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -11,15 +10,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (pylint writeroom-mode zenburn-theme flyspell-correct php-mode markdown-mode+ markdown-mode goto-last-change yaml-mode magit elpy))))
-
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-
+    (dockerfile-mode syslog-mode js2-mode ess json-mode pylint writeroom-mode zenburn-theme flyspell-correct php-mode markdown-mode+ markdown-mode goto-last-change yaml-mode magit elpy))))
 
 ;;--------------------------------------------
 ;; ADAPTED FROM WILL'S STANDARD EMACS FILE:
@@ -31,13 +22,16 @@
 ;; FONT SIZE for 4k monitor
 (set-face-attribute 'default nil :height 150)
 
-
 ;;----------------------------------------------------------------------------
 ;; ELPY
-(elpy-enable)
-(setq
- python-shell-interpreter "ipython"
- python-shell-interpreter-args "/home/jack/.emacs.d/ipython_startup.py -i --simple-prompt")
+(use-package elpy
+	     :ensure t
+	     :init
+	     (elpy-enable)
+	     :config
+	     (setq python-shell-interpreter "ipython"
+		   python-shell-interpreter-args "--simple-prompt -i"
+		   elpy-rpc-virtualenv-path 'current))
 
 ;;----------------------------------------------------------------------------
 ;; WHITESPACE
@@ -49,7 +43,10 @@
 
 ;;---------------------------------------------------------------------------
 ;; COLOUR THEME
-(load-theme 'zenburn t)
+(use-package zenburn-theme
+	     :ensure t
+	     :config
+	     (load-theme 'zenburn t))
 
 
 ;;----------------------------------------------
@@ -84,10 +81,10 @@
 ;;----------------------------------------------
 ;; MAGIT
 ;; https://github.com/magit/magit
+(use-package magit
+  :ensure t
+  :bind ("C-x C-g" . magit-status))
 (require 'magit)
-(global-set-key "\C-x\C-g" 'magit-status)
-;;(setq magit-last-seen-setup-instructions "1.4.0")
-;;(setq magit-push-always-verify nil)
 
 
 ;;----------------------------------------------------------------------------
