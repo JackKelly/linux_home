@@ -110,9 +110,11 @@
 ;;----------------------------------------------------------------------------
 ;; ENABLE goto-last-change
 ;; from http://www.emacswiki.org/emacs/goto-last-change.el
-(autoload 'goto-last-change "goto-last-change"
-  "Set point to the position of the last change." t) 
-(global-set-key "\C-x\C-\\" 'goto-last-change)
+;;(autoload 'goto-last-change "goto-last-change"
+;;  "Set point to the position of the last change." t) 
+;;(global-set-key "\C-x\C-\\" 'goto-last-change)
+(use-package goto-last-change
+  :bind ("C-x C-\\" . goto-last-change))
 
 
 ;;----------------------------------------------------------------------------
