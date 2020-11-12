@@ -1,5 +1,6 @@
 channels:
   - conda-forge
+  - pytorch
   - defaults
 channel_priority: strict
 auto_activate_base: false
