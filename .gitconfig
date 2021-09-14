@@ -1,3 +1,5 @@
 [user]
 	email = jack@openclimatefix.org
 	name = Jack Kelly
+[pull]
+	rebase = false
