@@ -35,12 +35,13 @@
 		   elpy-rpc-virtualenv-path 'current))
 
 ;;----------------------------------------------------------------------------
-;; WHITESPACE
-(require 'whitespace)
-(setq whitespace-style '(face tabs lines-tail))
-(setq whitespace-line-column 80)
-(global-whitespace-mode t)
-(setq whitespace-global-modes '(c-mode c++-mode python-mode))
+;; WHITESPACE - commenting out for now as it overrides flake8's line-length
+;; detection (and, under the hood, elpy uses flake8)
+;(require 'whitespace)
+;(setq whitespace-style '(face tabs lines-tail))
+;(setq whitespace-line-column 80)
+;(global-whitespace-mode t)
+;(setq whitespace-global-modes '(c-mode c++-mode python-mode))
 
 ;;---------------------------------------------------------------------------
 ;; COLOUR THEME
