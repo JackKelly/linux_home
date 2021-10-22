@@ -3,3 +3,5 @@
 	name = Jack Kelly
 [pull]
 	rebase = false
+[core]
+	editor = emacs
