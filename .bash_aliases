@@ -1,0 +1,1 @@
+alias pygrep='grep -r --include=*.py'
