@@ -5,3 +5,5 @@
 	rebase = false
 [core]
 	editor = emacs
+[init]
+	defaultBranch = main
