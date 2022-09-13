@@ -9,4 +9,4 @@ Spelling: `sudo apt install aspell-en`
 The `.emacs` in this repo already sets up Emacs to use aspell (instead of ispell).
 
 If goto-last-change complains `Cannot open load file, No such file or directory, goto-last-change` then try
-doing `alt-x install-package goto-last-change`.
+doing `alt-x package-install goto-last-change`.
