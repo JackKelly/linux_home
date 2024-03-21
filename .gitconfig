@@ -4,7 +4,7 @@
 [pull]
 	rebase = false
 [core]
-	editor = emacs
+	editor = nvim
 [init]
 	defaultBranch = main
 [push]
