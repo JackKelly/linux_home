@@ -7,3 +7,6 @@
 	editor = emacs
 [init]
 	defaultBranch = main
+[push]
+	autoSetupRemote = true
+	autoSetupRemote = true
