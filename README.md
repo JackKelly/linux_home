@@ -2,6 +2,21 @@
 
 Clone this repo to `~/linux_home` and then edit `install.sh` and run `install.sh`.
 
+# Things to install
+
+## `zoxide`
+
+Install: `cargo install zoxide --locked`
+
+(also use the same `cargo` command to update zoxide)
+
+And append this to the end of `~/.bashrc`:
+
+```bash
+# Set up zoxide
+eval "$(zoxide init --cmd cd bash)"
+```
+
 # Emacs
 
 **NOTE THAT MY EMACS CONFIG HASN'T BEEN UPDATED FOR A FEW YEARS! I SWITCHED TO VS CODE AROUND 2023. AND THEN I SWITCHED TO NEOVIM IN 2024!**
