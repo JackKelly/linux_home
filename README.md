@@ -19,7 +19,7 @@ eval "$(zoxide init --cmd cd bash)"
 
 # Emacs
 
-**NOTE THAT MY EMACS CONFIG HASN'T BEEN UPDATED FOR A FEW YEARS! I SWITCHED TO VS CODE AROUND 2023. AND THEN I SWITCHED TO NEOVIM IN 2024!**
+**NOTE THAT MY EMACS CONFIG HASN'T BEEN UPDATED FOR A FEW YEARS! I SWITCHED TO VS CODE AROUND 2023. AND THEN I SWITCHED TO NEOVIM IN 2024! You can find my nvim config [here](https://github.com/JackKelly/kickstart-modular.nvim)**
 
 After installing the .emacs in this repo, you'll need to manually do `alt-x`, `package-install` then `use-package`.
 Spelling: `sudo apt install aspell-en`
