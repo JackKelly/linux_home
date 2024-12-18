@@ -1,6 +1,6 @@
 #!/bin/bash
 
-files=".condarc .emacs .gitconfig .bash_aliases"
+files=".condarc .emacs .gitconfig .bash_aliases .config/vale"
 
 for file in $files
 do
