@@ -17,6 +17,10 @@ And append this to the end of `~/.bashrc`:
 eval "$(zoxide init --cmd cd bash)"
 ```
 
+# Vale
+
+The `.config/vale` config is used for the Vale formatter, which is used in my nvim config as a linter.
+
 # Emacs
 
 **NOTE THAT MY EMACS CONFIG HASN'T BEEN UPDATED FOR A FEW YEARS! I SWITCHED TO VS CODE AROUND 2023. AND THEN I SWITCHED TO NEOVIM IN 2024! You can find my nvim config [here](https://github.com/JackKelly/kickstart-modular.nvim)**
