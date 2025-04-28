@@ -7,13 +7,14 @@ Clone this repo to `~/linux_home` and then edit `install.sh` and run `install.sh
 ## General tools
 
 ```bash
-sudo apt install git easyeffects nodejs ripgrep
+sudo apt install git easyeffects nodejs ripgrep python3-venv
 sudo snap install ghostty nvim slack spotify astral-uv vale
 ```
 
 * `easyeffects` is useful to filter audio during video calls, to reduce "boomy" noises and high-pitched hisses.
 * `nodejs` is required for neovim's copilot plugin
 * `vale`: The `.config/vale` config is used for the Vale formatter, which is used in my `nvim` config as a linter for English text.
+* `python3-venv` is required to install `ruff` with `neovim`.
 
 ## `fzf`
 
