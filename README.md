@@ -4,6 +4,8 @@ Clone this repo to `~/linux_home` and then edit `install.sh` and run `install.sh
 
 # Things to install
 
+In `.bashrc`, set `export GEMINI_API_KEY=` to my Gemini API key (for use in nvim).
+
 ## General tools
 
 ```bash
