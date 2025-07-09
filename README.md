@@ -4,7 +4,7 @@ Clone this repo to `~/linux_home` and then edit `install.sh` and run `install.sh
 
 # Things to install
 
-In `.bashrc`, set `export GEMINI_API_KEY=` to my Gemini API key (for use in nvim).
+In `.bashrc`, set `export GEMINI_API_KEY=` to my Gemini API key (for use in neovim).
 
 ## General tools
 
@@ -20,8 +20,8 @@ sudo snap install ghostty nvim slack spotify astral-uv vale
 
 ## `fzf`
 
-1. Download [latest fzf binary](https://github.com/junegunn/fzf/releases) and move to `/bin/`
-2. [Set up shell integration](https://github.com/junegunn/fzf?tab=readme-ov-file#setting-up-shell-integration).
+1. `sudo apt install fzf`
+2. [Set up shell integration](https://github.com/junegunn/fzf?tab=readme-ov-file#setting-up-shell-integration). (I'm not sure if this is still necessary now that `fzf` is available via APT?)
 
 ## `zoxide`
 
@@ -42,7 +42,7 @@ eval "$(zoxide init --cmd cd bash)"
 
 After installing the `.emacs` in this repo, you'll need to manually do `alt-x`, `package-install` then `use-package`.
 Spelling: `sudo apt install aspell-en`
-The `.emacs` in this repo already sets up Emacs to use aspell (instead of ispell).
+The `.emacs` in this repo already sets up Emacs to use `aspell` (instead of `ispell`).
 
 If goto-last-change complains `Cannot open load file, No such file or directory, goto-last-change` then try
 doing `alt-x package-install goto-last-change`.
