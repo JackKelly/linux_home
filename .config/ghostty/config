@@ -45,5 +45,7 @@
 # bold-is-bright = true
 theme = tokyonight
 
-# Fond size in points
+# Font size in points.
+# 12 is good for my laptop screen (14" 1920 x 1200).
+# 14 is good for 32" 4k desktop screen.
 font-size = 14
