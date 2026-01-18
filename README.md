@@ -9,7 +9,7 @@ In `.bashrc`, set `export GEMINI_API_KEY=` to my Gemini API key (for use in neov
 ## General tools
 
 ```bash
-sudo apt install git easyeffects nodejs ripgrep python3-venv
+sudo apt install git easyeffects nodejs ripgrep python3-venv fzf zoxide
 sudo snap install ghostty nvim slack spotify astral-uv vale
 ```
 
@@ -17,15 +17,16 @@ sudo snap install ghostty nvim slack spotify astral-uv vale
 * `nodejs` is required for neovim's copilot plugin
 * `vale`: The `.config/vale` config is used for the Vale formatter, which is used in my `nvim` config as a linter for English text.
 * `python3-venv` is required to install `ruff` with `neovim`.
+* `fzf` and `zoxide`: see below for more installation instructions.
 
 ## `fzf`
 
 1. `sudo apt install fzf`
-2. [Set up shell integration](https://github.com/junegunn/fzf?tab=readme-ov-file#setting-up-shell-integration). (I'm not sure if this is still necessary now that `fzf` is available via APT?)
+2. [Set up shell integration](https://github.com/junegunn/fzf?tab=readme-ov-file#setting-up-shell-integration). (This is still necessary even after installing `fzf` is via APT.)
 
 ## `zoxide`
 
-Install: `cargo install zoxide --locked`
+Install: `sudo apt install zoxide`
 
 (also use the same `cargo` command to update zoxide)
 
