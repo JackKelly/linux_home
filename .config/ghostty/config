@@ -45,13 +45,14 @@
 # bold-is-bright = true
 # theme = tokyonight
 
-# Font size in points.
-# 12 is good for my laptop screen (14" 1920 x 1200).
-# 14 is good for 32" 4k desktop screen.
-font-size = 12
-
 # ssh-terminfo: Automatically attempts to install the terminfo on
 # the remote host when you connect.
 # ssh-env: Sets up environment compatibility to help with color
 # and terminal detection.
 shell-integration-features = ssh-terminfo,ssh-env
+
+# Font size in points.
+# 12 is good for my laptop screen (14" 1920 x 1200).
+# 14 is good for 32" 4k desktop screen.
+font-size = 14
+
