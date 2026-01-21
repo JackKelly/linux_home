@@ -1,6 +1,6 @@
 #!/bin/bash
 
-files=".condarc .emacs .gitconfig .bash_aliases .config/vale .config/ghostty"
+files=".gitconfig .config/vale .config/ghostty"
 
 for file in $files
 do
