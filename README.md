@@ -37,6 +37,28 @@ And append this to the end of `~/.bashrc`:
 eval "$(zoxide init --cmd cd bash)"
 ```
 
+## Environment variables to append to `~/.bashrc`
+
+```bash
+# ----------------------------------------------
+# ---------- Configured by Jack ----------------
+
+# Configure editor for `fc` command (and others)
+export EDITOR=nvim
+
+# Hugging Face
+export HF_TOKEN=
+
+# Gemini API token for jack@openclimatefix.org, in the solar-pv-nowcasting Google project:
+export GEMINI_API_KEY=
+export GOOGLE_GENERATIVE_AI_API_KEY=
+
+# Enphase token for accessing Envoy over LAN.
+# If you need an API key then go to https://entrez.enphaseenergy.com/entrez_tokens and start
+# typing "Kelly" in the "Select System". And then select the gateway.
+export ENPHASE_TOKEN=
+```
+
 # Emacs
 
 **NOTE THAT MY EMACS CONFIG HASN'T BEEN UPDATED FOR A FEW YEARS! I SWITCHED TO VS CODE AROUND 2023. AND THEN I SWITCHED TO NEOVIM IN 2024! You can find my nvim config [here](https://github.com/JackKelly/kickstart-modular.nvim)**
