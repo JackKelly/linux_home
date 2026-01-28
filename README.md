@@ -56,7 +56,7 @@ export HF_TOKEN=
 
 # Gemini API token for jack@openclimatefix.org, in the solar-pv-nowcasting Google project:
 export GEMINI_API_KEY=
-export GOOGLE_GENERATIVE_AI_API_KEY=
+export GOOGLE_GENERATIVE_AI_API_KEY="$GEMINI_API_KEY"
 
 # Enphase token for accessing Envoy over LAN.
 # If you need an API key then go to https://entrez.enphaseenergy.com/entrez_tokens and start
