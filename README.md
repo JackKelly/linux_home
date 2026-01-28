@@ -6,18 +6,25 @@ Clone this repo to `~/linux_home` and then edit `install.sh` and run `install.sh
 
 In `.bashrc`, set `export GEMINI_API_KEY=` to my Gemini API key (for use in neovim).
 
-## General tools
+## Base tools (for all Ubuntu installs: headless & desktop)
 
 ```bash
-sudo apt install git easyeffects nodejs ripgrep python3-venv fzf zoxide
-sudo snap install ghostty nvim slack spotify astral-uv vale
+sudo apt install git ripgrep fzf zoxide
+sudo snap install nvim astral-uv vale
+```
+
+* `vale`: The `.config/vale` config is used for the Vale formatter, which is used in my `nvim` config as a linter for English text.
+* `fzf` and `zoxide`: see below for more installation instructions.
+
+## Install on desktop
+
+```bash
+sudo apt install easyeffects 
+sudo snap install ghostty slack spotify
 ```
 
 * `easyeffects` is useful to filter audio during video calls, to reduce "boomy" noises and high-pitched hisses.
-* `nodejs` is required for neovim's copilot plugin
-* `vale`: The `.config/vale` config is used for the Vale formatter, which is used in my `nvim` config as a linter for English text.
-* `python3-venv` is required to install `ruff` with `neovim`.
-* `fzf` and `zoxide`: see below for more installation instructions.
+* Maybe also [install OBS Studio](https://github.com/obsproject/obs-studio/wiki/install-instructions#linux) to zoom my webcam during video calls.
 
 ## `fzf`
 
@@ -27,8 +34,6 @@ sudo snap install ghostty nvim slack spotify astral-uv vale
 ## `zoxide`
 
 Install: `sudo apt install zoxide`
-
-(also use the same `cargo` command to update zoxide)
 
 And append this to the end of `~/.bashrc`:
 
@@ -59,14 +64,6 @@ export GOOGLE_GENERATIVE_AI_API_KEY=
 export ENPHASE_TOKEN=
 ```
 
-# Emacs
+# Neovim
 
-**NOTE THAT MY EMACS CONFIG HASN'T BEEN UPDATED FOR A FEW YEARS! I SWITCHED TO VS CODE AROUND 2023. AND THEN I SWITCHED TO NEOVIM IN 2024! You can find my nvim config [here](https://github.com/JackKelly/kickstart-modular.nvim)**
-
-After installing the `.emacs` in this repo, you'll need to manually do `alt-x`, `package-install` then `use-package`.
-Spelling: `sudo apt install aspell-en`
-The `.emacs` in this repo already sets up Emacs to use `aspell` (instead of `ispell`).
-
-If goto-last-change complains `Cannot open load file, No such file or directory, goto-last-change` then try
-doing `alt-x package-install goto-last-change`.
-
+You can find my nvim config [here](https://github.com/JackKelly/kickstart-modular.nvim).

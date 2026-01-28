@@ -1,9 +1,0 @@
-{
-    // Editor Configuration
-    // The configuration for all text editors.
-    // If `fontFamily`, `fontSize` or `lineHeight` are `null`,
-    // values from current theme are used.
-    "editorConfig": {
-        "autoClosingBrackets": false
-    }
-}
