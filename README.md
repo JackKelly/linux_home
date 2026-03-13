@@ -23,6 +23,8 @@ sudo apt install easyeffects
 sudo snap install ghostty slack spotify
 ```
 
+Install the [TopHat Gnome extension](https://extensions.gnome.org/extension/5219/tophat/) to show CPU usage etc. in the top bar.
+
 * `easyeffects` is useful to filter audio during video calls, to reduce "boomy" noises and high-pitched hisses.
 * Maybe also [install OBS Studio](https://github.com/obsproject/obs-studio/wiki/install-instructions#linux) to zoom my webcam during video calls.
 
