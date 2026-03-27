@@ -69,3 +69,8 @@ export ENPHASE_TOKEN=
 # Neovim
 
 You can find my nvim config [here](https://github.com/JackKelly/kickstart-modular.nvim).
+
+# OpenCode custom config
+
+You can find my custom opencode agents and commands and other config
+[here](https://github.com/JackKelly/opencode_config).
