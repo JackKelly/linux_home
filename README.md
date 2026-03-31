@@ -10,7 +10,8 @@ In `.bashrc`, set `export GEMINI_API_KEY=` to my Gemini API key (for use in neov
 
 ```bash
 sudo apt install git ripgrep fzf zoxide
-sudo snap install nvim astral-uv vale
+sudo snap install nvim astral-uv --classic
+sudo snap install vale
 ```
 
 * `vale`: The `.config/vale` config is used for the Vale formatter, which is used in my `nvim` config as a linter for English text.
