@@ -9,7 +9,7 @@ In `.bashrc`, set `export GEMINI_API_KEY=` to my Gemini API key (for use in neov
 ## Base tools (for all Ubuntu installs: headless & desktop)
 
 ```bash
-sudo apt install git ripgrep fzf zoxide
+sudo apt install git ripgrep fzf zoxide python3-pip
 sudo snap install nvim astral-uv --classic
 sudo snap install vale
 ```
