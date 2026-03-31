@@ -9,9 +9,10 @@ In `.bashrc`, set `export GEMINI_API_KEY=` to my Gemini API key (for use in neov
 ## Base tools (for all Ubuntu installs: headless & desktop)
 
 ```bash
-sudo apt install git ripgrep fzf zoxide python3-pip make unzip gcc tree-sitter-cli cargo
+sudo apt install git ripgrep fzf zoxide python3-pip make unzip gcc
 sudo snap install nvim astral-uv --classic
 sudo snap install vale
+# Next, install rust. See: https://rust-lang.org/learn/get-started/
 cargo install --locked tree-sitter-cli
 ```
 
