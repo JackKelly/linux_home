@@ -9,14 +9,14 @@ In `.bashrc`, set `export GEMINI_API_KEY=` to my Gemini API key (for use in neov
 ## Base tools (for all Ubuntu installs: headless & desktop)
 
 ```bash
-sudo apt install git ripgrep fzf zoxide python3-pip make unzip gcc
+sudo apt install git ripgrep fzf zoxide python3-pip make unzip gcc tree-sitter-cli
 sudo snap install nvim astral-uv --classic
 sudo snap install vale
 ```
 
 * `vale`: The `.config/vale` config is used for the Vale formatter, which is used in my `nvim` config as a linter for English text.
 * `fzf` and `zoxide`: see below for more installation instructions.
-* `python3-pip`, `make`, `unzip`, `gcc`: All required for `nvim`.
+* `python3-pip`, `make`, `unzip`, `gcc`, `tree-sitter-cli`: All required for `nvim`.
 
 ## Install on desktop
 
