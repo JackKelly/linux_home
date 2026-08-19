@@ -66,11 +66,78 @@ export GOOGLE_GENERATIVE_AI_API_KEY="$GEMINI_API_KEY"
 export ENPHASE_TOKEN=
 ```
 
+## Fix: `ncurses: cannot initialize terminal type ($TERM="xterm-ghostty")`
+
+**Cause:** Ghostty ships its own `xterm-ghostty` terminfo entry, installed only into `~/.terminfo/` (user-local). `sudo` resets `HOME` to root's, so root can't see it and ncurses-based tools (`sudo -e`, `systemctl edit`, etc.) fail.
+
+
+```bash
+infocmp -x xterm-ghostty > /tmp/xterm-ghostty.ti
+sudo tic -x -o /usr/share/terminfo /tmp/xterm-ghostty.ti
+rm /tmp/xterm-ghostty.ti
+```
+
+**Verify:**
+
+```bash
+sudo infocmp xterm-ghostty   # should print the full entry, not an error
+sudo systemctl edit nvidia-persistenced.service  # Test this works
+```
+
+**Notes:**
+
+- Run this from a normal (non-sudo) shell where `xterm-ghostty` already resolves — Ghostty installs the user-local copy automatically the first time it runs.
+- If `tic` warns `alias ghostty multiply defined`, that's harmless — it just means a separate `ghostty` terminfo entry already existed alongside `xterm-ghostty`; the install still succeeds.
+- This needs redoing on every fresh Ubuntu install (or any time `/usr/share/terminfo` is reset), since it writes to a system path outside your home directory.
+
+## GPU idle power fix — NVIDIA persistence mode
+
+**The problem:** An idle NVIDIA GPU (RTX A6000, headless workstation) draws 70-90W instead of its true idle floor of ~6-20W. The cause is that persistence mode is disabled — the `nvidia-persistenced` systemd unit shipped with Ubuntu's driver package starts with a `--no-persistence-mode` flag, so the NVIDIA kernel driver doesn't keep the GPU context initialized between clients. Every time something connects to the GPU — a one-off `nvidia-smi` query, or a library like XGBoost/PyTorch briefly probing CUDA availability at import — the driver has to spin the GPU up to full P0 clocks to service that connection. With connections happening often enough (monitoring loops, repeated queries, parallel test runs), the GPU never gets the chance to settle back down to its low-power P8 idle state. Enabling persistence mode keeps the driver permanently initialized, so new connections no longer trigger a wake-to-full-power cycle — the GPU idles at its true low-power floor and only draws real power when something actually asks it to compute.
+
+**The fix (persists across reboots):**
+
+1. Create a systemd drop-in override rather than editing the packaged unit file directly (so a driver package update won't silently revert it):
+
+   ```bash
+   sudo systemctl edit nvidia-persistenced.service
+   ```
+
+2. In the editor that opens, add:
+
+   ```ini
+   [Service]
+   ExecStart=
+   ExecStart=/usr/bin/nvidia-persistenced --user nvidia-persistenced --verbose
+   ```
+
+   The blank `ExecStart=` first is required — systemd only lets you *replace* `ExecStart` if you clear it first, otherwise your line just appends to the original (which still has `--no-persistence-mode` in it). The second line matches the packaged command with `--no-persistence-mode` dropped; `nvidia-persistenced` enables persistence mode by default when that flag is absent. Save and exit.
+
+3. Reload systemd and restart the service:
+
+   ```bash
+   sudo systemctl daemon-reload
+   sudo systemctl restart nvidia-persistenced
+   ```
+
+4. Verify:
+
+   ```bash
+   systemctl cat nvidia-persistenced.service               # confirm the override merged in
+   nvidia-smi --query-gpu=persistence_mode --format=csv,noheader   # should say "Enabled"
+   ps aux | grep nvidia-persistenced                        # cmdline should not show --no-persistence-mode
+   ```
+
+   A reboot is the real test — confirm `persistence_mode` still reports `Enabled` afterward without re-running anything manually.
+
+**Diagnostic notes for next time:** `nvidia-smi -q -d POWER` shows a rolling Min/Max/Avg power window, useful for catching intermittent spikes. `nvidia-smi --query-gpu=power.draw,pstate,utilization.gpu --format=csv -l 1` (one persistent connection, not a shell loop of one-off calls) is the right way to watch live power without the polling itself causing the same wake-up churn you're trying to diagnose. Genuine brief spikes (P2, tens of watts, seconds-long, 0% utilization) can still happen when something on the machine imports a CUDA-aware library (PyTorch, XGBoost) even for CPU-only work — that's expected NVML/driver activity, not a misconfiguration.
+
 # Neovim
 
 You can find my nvim config [here](https://github.com/JackKelly/kickstart-modular.nvim).
 
 # OpenCode custom config
+
+(Update: I've switched from OpenCode to Claude Code!)
 
 You can find my custom opencode agents and commands and other config
 [here](https://github.com/JackKelly/opencode_config).
