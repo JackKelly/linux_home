@@ -73,8 +73,6 @@ export ENPHASE_TOKEN=
 # Dagster
 export DAGSTER_HOME=/home/jack/dagster_home/
 
-. "$HOME/.cargo/env"
-
 # opencode
 export PATH=/home/jack/.opencode/bin:$PATH
 
