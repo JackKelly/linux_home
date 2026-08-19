@@ -69,6 +69,17 @@ export GOOGLE_GENERATIVE_AI_API_KEY="$GEMINI_API_KEY"
 # If you need an API key then go to https://entrez.enphaseenergy.com/entrez_tokens and start
 # typing "Kelly" in the "Select System". And then select the gateway.
 export ENPHASE_TOKEN=
+
+# Dagster
+export DAGSTER_HOME=/home/jack/dagster_home/
+
+. "$HOME/.cargo/env"
+
+# opencode
+export PATH=/home/jack/.opencode/bin:$PATH
+
+# Required by Claude Code
+export PATH="$HOME/.local/bin:$PATH"
 ```
 
 ## Fix: `ncurses: cannot initialize terminal type ($TERM="xterm-ghostty")`
