@@ -33,12 +33,14 @@ Install the [TopHat Gnome extension](https://extensions.gnome.org/extension/5219
 * `easyeffects` is useful to filter audio during video calls, to reduce "boomy" noises and high-pitched hisses.
 * Maybe also [install OBS Studio](https://github.com/obsproject/obs-studio/wiki/install-instructions#linux) to zoom my webcam during video calls.
 
-## `fzf`
+## Install on desktops and servers
+
+### `fzf`
 
 1. `sudo apt install fzf`
 2. [Set up shell integration](https://github.com/junegunn/fzf?tab=readme-ov-file#setting-up-shell-integration). (This is still necessary even after installing `fzf` is via APT.)
 
-## `zoxide`
+### `zoxide`
 
 Install: `sudo apt install zoxide`
 
@@ -49,7 +51,7 @@ And append this to the end of `~/.bashrc`:
 eval "$(zoxide init --cmd cd bash)"
 ```
 
-## Environment variables to append to `~/.bashrc`
+### Environment variables to append to `~/.bashrc`
 
 ```bash
 # ----------------------------------------------
@@ -80,7 +82,19 @@ export PATH=/home/jack/.opencode/bin:$PATH
 export PATH="$HOME/.local/bin:$PATH"
 ```
 
-## Fix: `ncurses: cannot initialize terminal type ($TERM="xterm-ghostty")`
+## Install on headless servers
+
+### Set `amd_pstate=active`
+
+On a desktop machine, Ubuntu already defaults to using `amd_pstate=active`. But not so on servers.
+Change it:
+
+- `sudo nvim /etc/default/grub`
+- append `amd_pstate=active` to the line `GRUB_CMDLINE_LINUX_DEFAULT="..."`
+- `sudo update-grub`
+- reboot
+
+### Fix: `ncurses: cannot initialize terminal type ($TERM="xterm-ghostty")`
 
 **Cause:** Ghostty ships its own `xterm-ghostty` terminfo entry, installed only into `~/.terminfo/` (user-local). `sudo` resets `HOME` to root's, so root can't see it and ncurses-based tools (`sudo -e`, `systemctl edit`, etc.) fail.
 
@@ -104,7 +118,7 @@ sudo systemctl edit nvidia-persistenced.service  # Test this works
 - If `tic` warns `alias ghostty multiply defined`, that's harmless — it just means a separate `ghostty` terminfo entry already existed alongside `xterm-ghostty`; the install still succeeds.
 - This needs redoing on every fresh Ubuntu install (or any time `/usr/share/terminfo` is reset), since it writes to a system path outside your home directory.
 
-## GPU idle power fix — NVIDIA persistence mode
+### GPU idle power fix — NVIDIA persistence mode
 
 **The problem:** An idle NVIDIA GPU (RTX A6000, headless workstation) draws 70-90W instead of its true idle floor of ~6-20W. The cause is that persistence mode is disabled — the `nvidia-persistenced` systemd unit shipped with Ubuntu's driver package starts with a `--no-persistence-mode` flag, so the NVIDIA kernel driver doesn't keep the GPU context initialized between clients. Every time something connects to the GPU — a one-off `nvidia-smi` query, or a library like XGBoost/PyTorch briefly probing CUDA availability at import — the driver has to spin the GPU up to full P0 clocks to service that connection. With connections happening often enough (monitoring loops, repeated queries, parallel test runs), the GPU never gets the chance to settle back down to its low-power P8 idle state. Enabling persistence mode keeps the driver permanently initialized, so new connections no longer trigger a wake-to-full-power cycle — the GPU idles at its true low-power floor and only draws real power when something actually asks it to compute.
 
