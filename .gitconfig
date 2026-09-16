@@ -5,6 +5,7 @@
 	rebase = false
 [core]
 	editor = nvim
+	pager = hunk pager
 [init]
 	defaultBranch = main
 [push]

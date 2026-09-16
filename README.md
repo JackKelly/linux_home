@@ -38,6 +38,12 @@ And append this to the end of `~/.bashrc`:
 eval "$(zoxide init --cmd cd bash)"
 ```
 
+### `gh` GitHub CLI
+
+See the [installation
+instructions](https://github.com/cli/cli/blob/trunk/docs/install_linux.md#debian). (Yes, copy and
+paste that 9-line "one liner" and run it!)
+
 ### Environment variables to append to `~/.bashrc`
 
 ```bash
