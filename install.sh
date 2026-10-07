@@ -1,6 +1,6 @@
 #!/bin/bash
 
-files=".gitconfig .config/vale .config/ghostty"
+files=".gitconfig .config/vale .config/ghostty .claude/settings.json .claude/output-styles"
 
 for file in $files
 do
