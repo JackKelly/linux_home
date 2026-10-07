@@ -9,7 +9,7 @@ In `.bashrc`, set `export GEMINI_API_KEY=` to my Gemini API key (for use in neov
 ## Base tools (for all Ubuntu installs: headless & desktop)
 
 ```bash
-sudo apt install git ripgrep fzf zoxide python3-pip python3-venv make unzip gcc clang nodejs
+sudo apt install git ripgrep fzf zoxide python3-pip python3-venv make unzip gcc clang nodejs btop
 sudo snap install nvim astral-uv --classic
 sudo snap install vale
 # Next, install rust. See: https://rust-lang.org/learn/get-started/
@@ -20,6 +20,8 @@ cargo install --locked tree-sitter-cli
 * `fzf` and `zoxide`: see below for more installation instructions.
 * `python3-pip`, `python3-venv`, `make`, `unzip`, `gcc`, `tree-sitter-cli`: All required for `nvim`.
 * `clang` and `nodejs` are required to install `tree-sitter-cli`
+* `btop` is like `htop` but better :). Install using `apt` not `snap` to avoid spamming the kernel
+  log with denial messages; and because the `apt` version shows GPU utilisation.
 
 
 ### `fzf`
