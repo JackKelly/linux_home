@@ -23,6 +23,13 @@ cargo install --locked tree-sitter-cli
 * `btop` is like `htop` but better :). Install using `apt` not `snap` to avoid spamming the kernel
   log with denial messages; and because the `apt` version shows GPU utilisation.
 
+### `claude`
+
+Add this manually to `~/.claude/settings.json`: `{ "outputStyle": "Concise Bullets" }`. 
+
+The "Concise Bullets" output style is tracked in this "linux home" repo in
+`claude/output-styles/concise-bullets.md`. But `settings.json` can look very different on different
+machines, so `settings.json` isn't tracked in "linux home".
 
 ### `fzf`
 
